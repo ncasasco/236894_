@@ -169,19 +169,19 @@ namespace UserInterface
             // 
             // textBoxPasswordLogin
             // 
-            this.textBoxPasswordLogin.Location = new System.Drawing.Point(168, 215);
+            this.textBoxPasswordLogin.Location = new System.Drawing.Point(187, 215);
             this.textBoxPasswordLogin.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxPasswordLogin.Name = "textBoxPasswordLogin";
             this.textBoxPasswordLogin.PasswordChar = '·';
-            this.textBoxPasswordLogin.Size = new System.Drawing.Size(227, 22);
+            this.textBoxPasswordLogin.Size = new System.Drawing.Size(208, 22);
             this.textBoxPasswordLogin.TabIndex = 2;
             // 
             // textBoxUserLogin
             // 
-            this.textBoxUserLogin.Location = new System.Drawing.Point(168, 166);
+            this.textBoxUserLogin.Location = new System.Drawing.Point(187, 166);
             this.textBoxUserLogin.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxUserLogin.Name = "textBoxUserLogin";
-            this.textBoxUserLogin.Size = new System.Drawing.Size(227, 22);
+            this.textBoxUserLogin.Size = new System.Drawing.Size(208, 22);
             this.textBoxUserLogin.TabIndex = 1;
             // 
             // label8
@@ -200,12 +200,12 @@ namespace UserInterface
             // 
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label11.Location = new System.Drawing.Point(12, 156);
+            this.label11.Location = new System.Drawing.Point(8, 154);
             this.label11.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(144, 38);
+            this.label11.Size = new System.Drawing.Size(185, 38);
             this.label11.TabIndex = 7;
-            this.label11.Text = "User";
+            this.label11.Text = "Mail/Username";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label12

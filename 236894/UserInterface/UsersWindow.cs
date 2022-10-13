@@ -36,7 +36,8 @@ namespace UserInterface
                     ClearTextBoxes();
                     label7.Hide();
                 }
-                else { label7.Show();
+                else { 
+                    label7.Show();
                 }
             }
             catch(BusinessLogicException exc1)
