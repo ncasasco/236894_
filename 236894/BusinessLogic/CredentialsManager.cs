@@ -14,10 +14,11 @@ namespace BusinessLogic
         private const int HashSize = 20;
         private readonly UserRepo usersRepo;
         public User UserLogged { get; set; }
-        public CredentialsManager(UserRepo usersRepo, User admin)
+
+        public CredentialsManager(UserRepo usersRepo, User user)
         {
             this.usersRepo = usersRepo;
-            SaveUser(admin);
+            SaveUser(user);
         }
 
         public bool IsLogged { get; private set; }
