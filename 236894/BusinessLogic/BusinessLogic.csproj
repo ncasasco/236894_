@@ -45,6 +45,10 @@
     <Compile Include="BusinessLogicException.cs" />
     <Compile Include="Credentials.cs" />
     <Compile Include="CredentialsManager.cs" />
+    <Compile Include="Genre.cs" />
+    <Compile Include="GenreRepo.cs" />
+    <Compile Include="Movie.cs" />
+    <Compile Include="MovieRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />
     <Compile Include="UserRepo.cs" />
