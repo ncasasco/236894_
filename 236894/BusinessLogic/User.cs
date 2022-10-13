@@ -8,6 +8,7 @@ namespace BusinessLogic
         private string mail;
         private string username;
         private string password;
+        private bool isAdmin;
         public const int MailMinLength = 4;
         public const int MailMaxLength = 30;
         public const int UsernameMinLength = 10;
@@ -48,7 +49,7 @@ namespace BusinessLogic
                     password = value;
             }
         }
-        
+        public bool IsAdmin { get; set; }
         public bool Equals(User other) => other != null && other.Mail.Equals(this.Mail);
 
         public User DeepClone()
@@ -58,6 +59,7 @@ namespace BusinessLogic
                 mail = this.Mail,
                 password = this.Password,
                 username = this.Username,
+                isAdmin = this.IsAdmin
             };
         }
 

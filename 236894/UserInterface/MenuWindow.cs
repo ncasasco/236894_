@@ -13,37 +13,38 @@ namespace UserInterface
 {
     public partial class MenuWindow : Form
     {
-        public MenuWindow()
+        private UserRepo userList;
+        private CredentialsManager credentials;
+        public MenuWindow(UserRepo newUserList, CredentialsManager newCredentials)
         {
             InitializeComponent();
-            moviesView1.Show();
+            panel2.Show();
+            btnMovies.Show();
+            btnGenres.Show();
+            userList = newUserList;
+            credentials = newCredentials;
+            if (credentials.UserLogged.IsAdmin)
+            {
+                btnMovies.Show();
+                btnGenres.Show();
+            }
+        }
+        private void button1_Click_3(object sender, EventArgs e)
+        {
+            panel2.Show();
+            panel3.Hide();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            
+            panel2.Hide();
+            panel3.Show();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            credentials.Logout();
             this.Close();
-        }
-
-        private void button1_Click_2(object sender, EventArgs e)
-        {
-                this.Hide();
-                UsersWindow newWindow = new UsersWindow();
-                newWindow.Show();
-        }
-
-        private void moviesView1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click_3(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -19,10 +19,17 @@ namespace UserInterface
         public UsersWindow()
         {
             InitializeComponent();
+            
             if (userList == null)
                 userList = new UserRepo();
             if (credentialsAux == null)
                 credentialsAux = new Credentials();
+            User admin = new User();
+            admin.Mail = "nicomail";
+            admin.Username = "nicolascasasco";
+            admin.Password = "1234567890";
+            admin.IsAdmin = true;
+            credentialsHandler = new CredentialsManager(userList, admin);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -34,6 +41,7 @@ namespace UserInterface
                 newUser.Mail = textBoxMail.Text;
                 newUser.Username = textBoxUsername.Text;
                 newUser.Password = textBoxPassword.Text;
+                newUser.IsAdmin = false;
                 if (textBoxPassword.Text == textBoxConfirm.Text)
                 {
                     credentialsHandler = new CredentialsManager(userList, newUser);
@@ -91,11 +99,10 @@ namespace UserInterface
                     credentialsAux.Mail = textBoxUserLogin.Text;
                     credentialsAux.Username = textBoxUserLogin.Text;
                     credentialsAux.Password = textBoxPasswordLogin.Text;
-
                     credentialsHandler.Login(credentialsAux);
 
                     this.Hide();
-                    MenuWindow newWindow = new MenuWindow();
+                    MenuWindow newWindow = new MenuWindow(userList, credentialsHandler);
                     newWindow.Show();
                 }
             }

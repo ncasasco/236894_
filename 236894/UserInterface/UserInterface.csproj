@@ -74,19 +74,10 @@
     <Compile Include="MenuWindow.Designer.cs">
       <DependentUpon>MenuWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="MoviesView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="MoviesView.Designer.cs">
-      <DependentUpon>MoviesView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MenuWindow.resx">
       <DependentUpon>MenuWindow.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MoviesView.resx">
-      <DependentUpon>MoviesView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
