@@ -25,7 +25,7 @@ namespace UserInterface
             if (credentialsAux == null)
                 credentialsAux = new Credentials();
             User admin = new User();
-            admin.Mail = "nicomail";
+            admin.Mail = "nico@gmail.com";
             admin.Username = "nicolascasasco";
             admin.Password = "1234567890";
             admin.IsAdmin = true;

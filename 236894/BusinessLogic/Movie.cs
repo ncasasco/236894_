@@ -46,7 +46,7 @@ namespace BusinessLogic
             get => genre;
             set
             {
-                if (value?.Length == 0)
+                if (value?.Length <= 0)
                     throw new BusinessLogicException($"Genre cannot be empty");
                 else
                     genre = value;
@@ -70,7 +70,7 @@ namespace BusinessLogic
             set
             {
                 if (value?.Length <= 0)
-                    throw new ArgumentNullException("Description cannot be null");
+                    throw new BusinessLogicException("Description cannot be empty");
                 else
                     description = value;
             }

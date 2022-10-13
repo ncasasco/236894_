@@ -103,6 +103,7 @@ namespace UserInterface
             {
                 movie.MovieName = textMovieName.Text;
                 //movie.Genres.Add(cmbMovieGenre.Text);
+                movie.Genre = textMovieGenre.Text;
                 movie.PicturePath = textBoxURL.Text;
                 movie.Description = textMovieDesc.Text;
                 movie.IsExplicit = checkBoxExplicit.Checked;
@@ -138,10 +139,13 @@ namespace UserInterface
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-          string auxName = listView1.SelectedItems[0].Text;
-          movieList.Remove(auxName);
-          listView1.Items.Remove(listView1.SelectedItems[0]);
-          MessageBox.Show("Movie removed", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (listView1.Items.Count > 0 && listView1.SelectedItems != null)
+            {
+                string auxName = listView1.SelectedItems[0].Text;
+                movieList.Remove(auxName);
+                listView1.Items.Remove(listView1.SelectedItems[0]);
+                MessageBox.Show("Movie removed", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }
