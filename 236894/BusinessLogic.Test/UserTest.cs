@@ -32,14 +32,14 @@ namespace BusinessLogic.Test
         }
 
         [TestMethod]
-        [ExpectedException(typeof(BusinessLogicException), "Mail length must be between 8 and 30")]
+        [ExpectedException(typeof(BusinessLogicException), "Mail length must be between 4 and 30")]
         public void MailMaxLengthTest()
         {
             johnDoeUser.Mail = TooLongName;
         }
 
         [TestMethod]
-        [ExpectedException(typeof(BusinessLogicException), "Mail length must be between 8 and 30")]
+        [ExpectedException(typeof(BusinessLogicException), "Mail length must be between 4 and 30")]
         public void MailMinLengthTest()
         {
             johnDoeUser.Mail = "";
@@ -59,14 +59,14 @@ namespace BusinessLogic.Test
         }
 
         [TestMethod]
-        [ExpectedException(typeof(BusinessLogicException), "Username length must be between 10 and 30")]
+        [ExpectedException(typeof(BusinessLogicException), "Username length must be between 10 and 20")]
         public void UsernameMaxLengthTest()
         {
             johnDoeUser.Username = TooLongName;
         }
 
         [TestMethod]
-        [ExpectedException(typeof(BusinessLogicException), "Username length must be between 10 and 30")]
+        [ExpectedException(typeof(BusinessLogicException), "Username length must be between 10 and 20")]
         public void UsernameMinLengthTest()
         {
             johnDoeUser.Username = "";

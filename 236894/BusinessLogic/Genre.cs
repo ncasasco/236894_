@@ -17,11 +17,24 @@ namespace BusinessLogic
             set
             {
                 if (value?.Length == 0)
-                    throw new BusinessLogicException($"Name can't be empty");
+                    throw new BusinessLogicException($"Name cannot be empty");
                 else
                     genreName = value;
             }
         }
+
+        public string Description
+        {
+            get => description;
+            set
+            {
+                if (value?.Length <= 0)
+                    throw new ArgumentNullException("Description cannot be null");
+                else
+                    description = value;
+            }
+        }
+
         public bool Equals(Genre other) => other != null && other.GenreName.Equals(this.GenreName);
 
         public Genre DeepClone()
