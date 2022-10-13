@@ -51,6 +51,8 @@ namespace UserInterface
             this.textBoxConfirm = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.panelLogin.SuspendLayout();
             this.panelRegister.SuspendLayout();
             this.SuspendLayout();
@@ -127,12 +129,14 @@ namespace UserInterface
             // 
             // panelLogin
             // 
+            this.panelLogin.Controls.Add(this.label10);
             this.panelLogin.Controls.Add(this.btnLoginRegister);
             this.panelLogin.Controls.Add(this.btnLogin);
             this.panelLogin.Controls.Add(this.textBoxPasswordLogin);
             this.panelLogin.Controls.Add(this.textBoxUserLogin);
             this.panelLogin.Controls.Add(this.label8);
             this.panelLogin.Controls.Add(this.label11);
+            this.panelLogin.Controls.Add(this.label9);
             this.panelLogin.Controls.Add(this.label12);
             this.panelLogin.Location = new System.Drawing.Point(0, 0);
             this.panelLogin.Margin = new System.Windows.Forms.Padding(4);
@@ -311,14 +315,38 @@ namespace UserInterface
             this.label7.Text = "Your password and validation password do not match";
             this.label7.Visible = false;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label9.Location = new System.Drawing.Point(184, 192);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(211, 17);
+            this.label9.TabIndex = 19;
+            this.label9.Text = "Mail/Username cannot be empty";
+            this.label9.Visible = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label10.Location = new System.Drawing.Point(184, 241);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(178, 17);
+            this.label10.TabIndex = 20;
+            this.label10.Text = "Password cannot be empty";
+            this.label10.Visible = false;
+            // 
             // UsersWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Desktop;
             this.ClientSize = new System.Drawing.Size(419, 373);
-            this.Controls.Add(this.panelRegister);
             this.Controls.Add(this.panelLogin);
+            this.Controls.Add(this.panelRegister);
             this.Location = new System.Drawing.Point(19, 206);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UsersWindow";
@@ -356,5 +384,7 @@ namespace UserInterface
         private System.Windows.Forms.TextBox textBoxConfirm;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
     }
 }

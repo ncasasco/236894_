@@ -13,9 +13,16 @@ namespace UserInterface
 {
     public partial class UsersWindow : Form
     {
+        public static UserRepo userList;
+        public static Credentials credentialsAux;
+        public static CredentialsManager credentialsHandler;
         public UsersWindow()
         {
             InitializeComponent();
+            if (userList == null)
+                userList = new UserRepo();
+            if (credentialsAux == null)
+                credentialsAux = new Credentials();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -29,6 +36,7 @@ namespace UserInterface
                 newUser.Password = textBoxPassword.Text;
                 if (textBoxPassword.Text == textBoxConfirm.Text)
                 {
+                    credentialsHandler = new CredentialsManager(userList, newUser);
                     MessageBox.Show("User created", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     panelLogin.Show();
@@ -70,13 +78,32 @@ namespace UserInterface
         {
             try
             {
-                this.Hide();
-                MenuWindow newWindow = new MenuWindow();
-                newWindow.Show();
+                if (textBoxUserLogin.Text == "")
+                {
+                    label9.Show();
+                }
+                else if (textBoxPasswordLogin.Text == "")
+                {
+                    label10.Show();
+                }
+                else
+                {
+                    credentialsAux.Mail = textBoxUserLogin.Text;
+                    credentialsAux.Username = textBoxUserLogin.Text;
+                    credentialsAux.Password = textBoxPasswordLogin.Text;
+
+                    credentialsHandler.Login(credentialsAux);
+
+                    this.Hide();
+                    MenuWindow newWindow = new MenuWindow();
+                    newWindow.Show();
+                }
             }
             catch(BusinessLogicException exc)
             {
                 ClearTextBoxes();
+                label9.Hide();
+                label10.Hide();
                 MessageBox.Show(exc.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }

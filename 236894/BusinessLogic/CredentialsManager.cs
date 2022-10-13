@@ -24,7 +24,7 @@ namespace BusinessLogic
 
         public void Login(Credentials userCredentials)
         {
-            if (!usersRepo.Exists(userCredentials.Mail) || !usersRepo.Exists(userCredentials.Username))
+            if (!usersRepo.Exists(userCredentials.Mail) && !usersRepo.Exists(userCredentials.Username))
                 throw new BusinessLogicException("Invalid username or password");
 
             User storedUser = usersRepo.Get(userCredentials.Username);
