@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLogic;
+using DataAccess;
 
 namespace UserInterface
 {
@@ -46,6 +47,20 @@ namespace UserInterface
                 {
                     credentialsHandler = new CredentialsManager(userList, newUser);
                     MessageBox.Show("User created", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    using (Context db = new Context())
+                    {
+                        var user = new User
+                        {
+                            Mail = newUser.Mail,
+                            Username = newUser.Username,
+                            Password = newUser.Password,
+                            IsAdmin = newUser.IsAdmin,
+                        };
+
+                        db.Users.Add(user);
+                        db.SaveChanges();
+                    }
 
                     panelLogin.Show();
                     panelRegister.Hide();

@@ -1,5 +1,6 @@
 ﻿//using BusinessLogic.Exceptions;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace BusinessLogic
 {
@@ -16,6 +17,8 @@ namespace BusinessLogic
         public const int PasswordMinLength = 10;
         public const int PasswordMaxLength = 30;
 
+
+        [Key]
         public string Mail
         {
             get => mail;

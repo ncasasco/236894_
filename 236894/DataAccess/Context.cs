@@ -4,7 +4,7 @@ using System.Data.Entity;
 using BusinessLogic;
 using System.Text;
 
-namespace BusinessLogic
+namespace DataAccess
 {
     public class Context : DbContext
     {
