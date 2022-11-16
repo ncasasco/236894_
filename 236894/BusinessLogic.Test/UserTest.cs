@@ -8,7 +8,7 @@ namespace BusinessLogic.Test
     public class UserTest
     {
         private User johnDoeUser;
-        private const string John = "Johnnnnnn";
+        private const string John = "Johnnnnnnn";
         private const string johndoe25 = "johndoeeee";
         private const string tooShortPassword = "Matias1";
         private const string TooLongName = "ExtremelyLongLongLongNameAndAlsoExtremelyLongLongLongLastName";

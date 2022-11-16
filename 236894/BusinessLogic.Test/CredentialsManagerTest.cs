@@ -19,14 +19,14 @@ namespace BusinessLogic.Test
             admin = new User()
             {
                 Mail = "adminnnnn",
-                Username = "Johnnnnn",
-                Password = "password",
+                Username = "Johnnnnnnn",
+                Password = "somepassword",
             };
             simpleUser = new User()
             {
                 Mail = "userrrrr",
-                Username = "Ryannnnn",
-                Password = "somepassword",
+                Username = "Ryannnnnnn",
+                Password = "anotherpassword",
             };
         }
 
@@ -44,6 +44,7 @@ namespace BusinessLogic.Test
             Credentials credentials = new Credentials()
             {
                 Mail = admin.Mail,
+                Username = admin.Username,
                 Password = admin.Password
             };
 
@@ -97,6 +98,7 @@ namespace BusinessLogic.Test
             Credentials credentials = new Credentials()
             {
                 Mail = admin.Mail,
+                Username = admin.Username,
                 Password = admin.Password
             };
             credentialsManager.Login(credentials);
@@ -107,6 +109,7 @@ namespace BusinessLogic.Test
             Credentials newUserCredentials = new Credentials()
             {
                 Mail = simpleUser.Mail,
+                Username = simpleUser.Username,
                 Password = simpleUser.Password
             };
             credentialsManager.Login(newUserCredentials);
