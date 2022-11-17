@@ -1,4 +1,5 @@
 ﻿using System;
+using DataAccess;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace BusinessLogic.Test
@@ -8,14 +9,15 @@ namespace BusinessLogic.Test
     {
         private User admin;
         private User simpleUser;
-        private UserRepo usersRepo;
+        private Context context;
+        private UserContext userContext;
 
         private readonly DateTime May18th1998 = new DateTime(1998, 5, 18);
 
         [TestInitialize]
         public void Setup()
         {
-            usersRepo = new UserRepo();
+            userContext = new UserContext(context);
             admin = new User()
             {
                 Mail = "adminnnnn",
@@ -33,14 +35,14 @@ namespace BusinessLogic.Test
         [TestMethod]
         public void ConstructorWithParametersTest()
         {
-            var credentialsManager = new CredentialsManager(usersRepo, admin);
+            var credentialsManager = new CredentialsManager(userContext);
             Assert.IsNotNull(credentialsManager);
         }
 
         [TestMethod]
         public void LoginTest()
         {
-            var credentialsManager = new CredentialsManager(usersRepo, admin);
+            var credentialsManager = new CredentialsManager(userContext);
             Credentials credentials = new Credentials()
             {
                 Mail = admin.Mail,
@@ -57,7 +59,7 @@ namespace BusinessLogic.Test
         [ExpectedException(typeof(BusinessLogicException), "Invalid mail or password")]
         public void InvalidPasswordLoginTest()
         {
-            var credentialsManager = new CredentialsManager(usersRepo, admin);
+            var credentialsManager = new CredentialsManager(userContext);
             Credentials credentials = new Credentials()
             {
                 Mail = admin.Mail,
@@ -71,7 +73,7 @@ namespace BusinessLogic.Test
         [ExpectedException(typeof(BusinessLogicException), "Invalid mail or password")]
         public void InvalidMailLoginTest()
         {
-            var credentialsManager = new CredentialsManager(usersRepo, admin);
+            var credentialsManager = new CredentialsManager(userContext);
             Credentials credentials = new Credentials()
             {
                 Mail = "invalid",
@@ -84,9 +86,9 @@ namespace BusinessLogic.Test
         [TestMethod]
         public void HashedPasswordTest()
         {
-            var credentialsManager = new CredentialsManager(usersRepo, admin);
+            var credentialsManager = new CredentialsManager(userContext);
 
-            var storedUser = usersRepo.Get(admin.Mail);
+            var storedUser = userContext.Get(admin.Mail);
 
             Assert.AreNotEqual(storedUser.Password, admin.Password);
         }
@@ -94,7 +96,7 @@ namespace BusinessLogic.Test
         [TestMethod]
         public void RegisterNewUserTest()
         {
-            var credentialsManager = new CredentialsManager(usersRepo, admin);
+            var credentialsManager = new CredentialsManager(userContext);
             Credentials credentials = new Credentials()
             {
                 Mail = admin.Mail,
@@ -121,7 +123,7 @@ namespace BusinessLogic.Test
         [ExpectedException(typeof(BusinessLogicException), "Insufficient permissions")]
         public void InsufficientPermissionsTest()
         {
-            var credentialsManager = new CredentialsManager(usersRepo, admin);
+            var credentialsManager = new CredentialsManager(userContext);
             Credentials credentials = new Credentials()
             {
                 Mail = admin.Mail,
@@ -143,7 +145,7 @@ namespace BusinessLogic.Test
         [ExpectedException(typeof(BusinessLogicException), "Not logged in")]
         public void NotLoggedInTest()
         {
-            var credentialsManager = new CredentialsManager(usersRepo, admin);
+            var credentialsManager = new CredentialsManager(userContext);
             credentialsManager.Register(simpleUser);
         }
 

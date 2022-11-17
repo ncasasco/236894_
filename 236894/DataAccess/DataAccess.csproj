@@ -53,8 +53,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Context.cs" />
+    <Compile Include="CredentialsManager.cs" />
+    <Compile Include="GenreContext.cs" />
+    <Compile Include="MovieContext.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="UserContext.cs" />
+    <Compile Include="Context.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

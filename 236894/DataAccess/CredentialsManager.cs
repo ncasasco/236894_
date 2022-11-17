@@ -1,4 +1,5 @@
 ﻿//using BusinessLogic.Exceptions;
+using BusinessLogic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,36 +7,34 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLogic
+namespace DataAccess
 {
     public class CredentialsManager
     {
         private const int SaltSize = 16;
         private const int HashSize = 20;
-        private readonly UserRepo usersRepo;
+        private readonly UserContext userContext;
         public User UserLogged { get; set; }
-        public CredentialsManager(UserRepo usersRepo, User admin)
+        public CredentialsManager(UserContext userContext)
         {
-            this.usersRepo = usersRepo;
-            SaveUser(admin);
+            this.userContext = userContext;
+            //SaveUser(admin);
         }
 
         public bool IsLogged { get; private set; }
 
         public void Login(Credentials userCredentials)
         {
-            if (!usersRepo.Exists(userCredentials.Mail) && !usersRepo.Exists(userCredentials.Username))
+            if (!userContext.Exists(userCredentials.Mail) && !userContext.Exists(userCredentials.Username))
                 throw new BusinessLogicException("Invalid username or password");
 
-            User storedUser = usersRepo.Get(userCredentials.Username);
+            User storedUser = userContext.Get(userCredentials.Username);
             IsLogged = storedUser.Password == Hash(userCredentials.Password);
             UserLogged = IsLogged ? storedUser : throw new BusinessLogicException("Invalid username or password");
         }
 
         public void Register(User user)
         {
-            if (!IsLogged)
-                throw new BusinessLogicException("Not logged in");
             SaveUser(user);
         }
 
@@ -45,7 +44,7 @@ namespace BusinessLogic
         {
             User newUser = user.DeepClone();
             newUser.Password = Hash(user.Password);
-            usersRepo.Add(newUser);
+            userContext.addUser(newUser);
         }
 
         private string Hash(string password, int iterations = 1000)

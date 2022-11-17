@@ -1,16 +1,17 @@
-﻿using System;
+﻿using BusinessLogic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLogic
+namespace DataAccess
 {
-    public class GenreRepo
+    public class GenreContext
     {
         IList<Genre> Genres;
 
-        public GenreRepo()
+        public GenreContext()
         {
             Genres = new List<Genre>();
         }
@@ -22,7 +23,7 @@ namespace BusinessLogic
             if (genre is null)
                 throw new BusinessLogicException(nameof(genre));
             if (Exists(genre.GenreName))
-                throw new BusinessLogicException("genre already exsists");
+                throw new BusinessLogicException("Genre already exsists");
 
             Genres.Add(genre);
         }

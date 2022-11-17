@@ -14,23 +14,27 @@ namespace UserInterface
 {
     public partial class UsersWindow : Form
     {
-        public static UserRepo userList;
+        private Context context;
+        private UserContext userContext;
         public static Credentials credentialsAux;
         public static CredentialsManager credentialsHandler;
         public UsersWindow()
         {
             InitializeComponent();
-            
-            if (userList == null)
-                userList = new UserRepo();
             if (credentialsAux == null)
                 credentialsAux = new Credentials();
+            this.context = new Context();
+            this.userContext = new UserContext(context);
             User admin = new User();
             admin.Mail = "nico@gmail.com";
             admin.Username = "nicolascasasco";
             admin.Password = "1234567890";
             admin.IsAdmin = true;
-            credentialsHandler = new CredentialsManager(userList, admin);
+            if (!this.userContext.Exists(admin.Username))
+            {
+                credentialsHandler = new CredentialsManager(userContext);
+                credentialsHandler.Register(admin);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -45,23 +49,10 @@ namespace UserInterface
                 newUser.IsAdmin = false;
                 if (textBoxPassword.Text == textBoxConfirm.Text)
                 {
-                    credentialsHandler = new CredentialsManager(userList, newUser);
+                    credentialsHandler = new CredentialsManager(userContext);
+                    credentialsHandler.Register(newUser);
                     MessageBox.Show("User created", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    using (Context db = new Context())
-                    {
-                        var user = new User
-                        {
-                            Mail = newUser.Mail,
-                            Username = newUser.Username,
-                            Password = newUser.Password,
-                            IsAdmin = newUser.IsAdmin,
-                        };
-
-                        db.Users.Add(user);
-                        db.SaveChanges();
-                    }
-
+                    //this.userContext.addUser(newUser);
                     panelLogin.Show();
                     panelRegister.Hide();
                     ClearTextBoxes();
@@ -111,13 +102,18 @@ namespace UserInterface
                 }
                 else
                 {
+                    credentialsHandler = new CredentialsManager(userContext);
                     credentialsAux.Mail = textBoxUserLogin.Text;
                     credentialsAux.Username = textBoxUserLogin.Text;
                     credentialsAux.Password = textBoxPasswordLogin.Text;
+                    if(textBoxUserLogin.Text == "nicolascasasco")
+                    {
+                        credentialsAux.isAdmin = true;
+                    }
                     credentialsHandler.Login(credentialsAux);
 
                     this.Hide();
-                    MenuWindow newWindow = new MenuWindow(userList, credentialsHandler);
+                    MenuWindow newWindow = new MenuWindow(userContext, credentialsHandler);
                     newWindow.Show();
                 }
             }

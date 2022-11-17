@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using DataAccess;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,22 +14,22 @@ namespace UserInterface
 {
     public partial class MenuWindow : Form
     {
-        private UserRepo userList;
+        private UserContext userContext;
         private CredentialsManager credentials;
-        private MovieRepo movieList;
-        private GenreRepo genreList;
+        private MovieContext movieList;
+        private GenreContext genreList;
 
-        public MenuWindow(UserRepo newUserList, CredentialsManager newCredentials)
+        public MenuWindow(UserContext newUserContext, CredentialsManager newCredentials)
         {
             InitializeComponent();
-            panel2.Show();
+            panel2.Hide();
             panel3.Hide();
-            btnMovies.Show();
-            btnGenres.Show();
-            userList = newUserList;
+            btnMovies.Hide();
+            btnGenres.Hide();
+            userContext = newUserContext;
             credentials = newCredentials;
-            genreList = new GenreRepo();
-            movieList = new MovieRepo();
+            genreList = new GenreContext();
+            movieList = new MovieContext();
             if (credentials.UserLogged.IsAdmin)
             {
                 btnMovies.Show();

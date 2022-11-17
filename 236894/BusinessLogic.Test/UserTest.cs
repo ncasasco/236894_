@@ -85,6 +85,35 @@ namespace BusinessLogic.Test
             johnDoeUser.Username = null;
         }
 
+        [TestMethod]
+        [ExpectedException(typeof(BusinessLogicException), "Password length must be between 10 and 30")]
+        public void PasswordMaxLengthTest()
+        {
+            johnDoeUser.Password = TooLongName;
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(BusinessLogicException), "Password length must be between 10 and 30")]
+        public void PasswordMinLengthTest()
+        {
+            johnDoeUser.Password = "";
+        }
+
+        [TestMethod]
+        public void setPasswordTest()
+        {
+            johnDoeUser.Username = John;
+            Assert.AreEqual(John, johnDoeUser.Username);
+        }
+
+
+
+        [TestMethod]
+        public void PasswordNotNullTest()
+        {
+            johnDoeUser.Username = null;
+        }
+
         private static string GenerateString(string text, int length)
         {
             string tooLongPath = "";

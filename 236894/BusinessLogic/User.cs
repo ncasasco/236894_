@@ -17,8 +17,6 @@ namespace BusinessLogic
         public const int PasswordMinLength = 10;
         public const int PasswordMaxLength = 30;
 
-
-        [Key]
         public string Mail
         {
             get => mail;
@@ -30,6 +28,8 @@ namespace BusinessLogic
                     mail = value;
             }
         }
+
+        [Key]
         public string Username
         {
             get => username;
@@ -52,7 +52,14 @@ namespace BusinessLogic
                     password = value;
             }
         }
-        public bool IsAdmin { get; set; }
+        public bool IsAdmin
+        {
+            get => isAdmin;
+            set
+            {
+                isAdmin = value;
+            }
+        }
         public bool Equals(User other) => other != null && other.Mail.Equals(this.Mail);
 
         public User DeepClone()

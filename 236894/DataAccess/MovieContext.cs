@@ -1,16 +1,17 @@
-﻿using System;
+﻿using BusinessLogic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLogic
+namespace DataAccess
 {
-    public class MovieRepo
+    public class MovieContext
     {
         IList<Movie> Movies;
 
-        public MovieRepo()
+        public MovieContext()
         {
             Movies = new List<Movie>();
         }
@@ -22,7 +23,7 @@ namespace BusinessLogic
             if (movie is null)
                 throw new BusinessLogicException(nameof(movie));
             if (Exists(movie.MovieName))
-                throw new BusinessLogicException("Movie already exsists");
+                throw new BusinessLogicException("Movie already exists");
 
             Movies.Add(movie);
         }
