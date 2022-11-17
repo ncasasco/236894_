@@ -1,22 +1,22 @@
 ﻿using BusinessLogic;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public class GenreContext
+    public class GenreContext : DbContext
     {
-        IList<Genre> Genres;
+        private Context dataContext;
 
-        public GenreContext()
+        public GenreContext(Context dataContext)
         {
-            Genres = new List<Genre>();
+            this.dataContext = dataContext;
         }
-
-        public int Count { get => Genres.Count; }
+        public int Count { get => this.dataContext.Movies.Count(); }
 
         public void Add(Genre genre)
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,14 +10,15 @@ namespace BusinessLogic
     public class Movie
     {
         private string movieName;
-        //private IList<string> genre;
         private string genre;
+        private string otherGenre;
         private string picturePath;
         public const int MaxPathLength = 260;
         private string description { get; set; }
         private bool isExplicit { get; set; }
         private bool isSponsored { get; set; }
 
+        [Key]
         public string MovieName
         {
             get => movieName;
@@ -29,18 +31,6 @@ namespace BusinessLogic
             }
         }
 
-        /*public IList<string> Genres
-        {
-            get => genre;
-
-            set
-            {
-                if (value?.Count < 0)
-                    throw new BusinessLogicException("Genre cannot be empty");
-                genre = value;
-            }
-        }*/
-
         public string Genre
         {
             get => genre;
@@ -50,6 +40,15 @@ namespace BusinessLogic
                     throw new BusinessLogicException($"Genre cannot be empty");
                 else
                     genre = value;
+            }
+        }
+
+        public string OtherGenre
+        {
+            get => otherGenre;
+            set
+            {
+               otherGenre = value;
             }
         }
         public string PicturePath

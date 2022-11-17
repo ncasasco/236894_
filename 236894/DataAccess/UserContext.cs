@@ -15,8 +15,9 @@ namespace DataAccess
         {
             this.dataContext = dataContext;
         }
+        public int Count { get => this.dataContext.Users.Count(); }
 
-        public void addUser(User user)
+        public void AddUser(User user)
         {
             if (user is null)
                 throw new ArgumentNullException(nameof(user));

@@ -34,6 +34,8 @@ namespace UserInterface
             this.btnMovies = new System.Windows.Forms.Button();
             this.bnSalir = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.textMovieOtherGenre = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.textMovieGenre = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.checkBoxSponsor = new System.Windows.Forms.CheckBox();
@@ -64,8 +66,6 @@ namespace UserInterface
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -121,7 +121,7 @@ namespace UserInterface
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.textMovieOtherGenre);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.textMovieGenre);
             this.panel2.Controls.Add(this.button2);
@@ -144,6 +144,23 @@ namespace UserInterface
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(500, 450);
             this.panel2.TabIndex = 4;
+            // 
+            // textMovieOtherGenre
+            // 
+            this.textMovieOtherGenre.Location = new System.Drawing.Point(97, 295);
+            this.textMovieOtherGenre.Name = "textMovieOtherGenre";
+            this.textMovieOtherGenre.Size = new System.Drawing.Size(168, 22);
+            this.textMovieOtherGenre.TabIndex = 35;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label11.Location = new System.Drawing.Point(12, 300);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(76, 17);
+            this.label11.TabIndex = 34;
+            this.label11.Text = "2nd Genre";
             // 
             // textMovieGenre
             // 
@@ -424,23 +441,6 @@ namespace UserInterface
             this.openFileDialog2.FileName = "fotoPoster";
             this.openFileDialog2.Filter = "Archivos de imagen |*.jpg;*.jpeg;*.png";
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(97, 295);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(168, 22);
-            this.textBox1.TabIndex = 35;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label11.Location = new System.Drawing.Point(12, 300);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(76, 17);
-            this.label11.TabIndex = 34;
-            this.label11.Text = "2nd Genre";
-            // 
             // MenuWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -500,7 +500,7 @@ namespace UserInterface
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textMovieGenre;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textMovieOtherGenre;
         private System.Windows.Forms.Label label11;
     }
 }

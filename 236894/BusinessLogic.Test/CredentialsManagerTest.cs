@@ -32,8 +32,8 @@ namespace BusinessLogic.Test
                 Username = "Ryannnnnnn",
                 Password = "anotherpassword",
             };
-            userContext.addUser(admin);
-            userContext.addUser(simpleUser);
+            userContext.AddUser(admin);
+            userContext.AddUser(simpleUser);
         }
 
         [TestMethod]

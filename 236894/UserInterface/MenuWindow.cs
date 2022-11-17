@@ -14,22 +14,24 @@ namespace UserInterface
 {
     public partial class MenuWindow : Form
     {
+        private Context context;
         private UserContext userContext;
         private CredentialsManager credentials;
-        private MovieContext movieList;
-        private GenreContext genreList;
+        private MovieContext movieContext;
+        private GenreContext genreContext;
 
-        public MenuWindow(UserContext newUserContext, CredentialsManager newCredentials)
+        public MenuWindow(Context newContext, UserContext newUserContext, CredentialsManager newCredentials)
         {
             InitializeComponent();
             panel2.Hide();
             panel3.Hide();
             btnMovies.Hide();
             btnGenres.Hide();
+            context = newContext;
             userContext = newUserContext;
             credentials = newCredentials;
-            genreList = new GenreContext();
-            movieList = new MovieContext();
+            genreContext = new GenreContext();
+            movieContext = new MovieContext(context);
             if (credentials.UserLogged.IsAdmin)
             {
                 btnMovies.Show();
@@ -70,7 +72,7 @@ namespace UserInterface
             {
                 genre.GenreName = textGenreName.Text;
                 genre.Description = textGenreDesc.Text;
-                genreList.Add(genre);
+                genreContext.Add(genre);
                 ListViewItem item = new ListViewItem(textGenreName.Text);
                 item.SubItems.Add(textGenreDesc.Text);
                 listView2.Items.Add(item);
@@ -106,11 +108,12 @@ namespace UserInterface
                 movie.MovieName = textMovieName.Text;
                 //movie.Genres.Add(cmbMovieGenre.Text);
                 movie.Genre = textMovieGenre.Text;
+                movie.OtherGenre = textMovieOtherGenre.Text;
                 movie.PicturePath = textBoxURL.Text;
                 movie.Description = textMovieDesc.Text;
                 movie.IsExplicit = checkBoxExplicit.Checked;
                 movie.IsSponsored = checkBoxSponsor.Checked;
-                movieList.Add(movie);
+                this.movieContext.AddMovie(movie);
                 ListViewItem item = new ListViewItem(textMovieName.Text);
                 //item.SubItems.Add(cmbMovieGenre.Text);
                 item.SubItems.Add(textMovieGenre.Text);
@@ -144,7 +147,7 @@ namespace UserInterface
             if (listView1.Items.Count > 0 && listView1.SelectedItems != null)
             {
                 string auxName = listView1.SelectedItems[0].Text;
-                movieList.Remove(auxName);
+                movieContext.Remove(auxName);
                 listView1.Items.Remove(listView1.SelectedItems[0]);
                 MessageBox.Show("Movie removed", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

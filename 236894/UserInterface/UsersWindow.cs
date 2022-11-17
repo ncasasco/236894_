@@ -113,7 +113,7 @@ namespace UserInterface
                     credentialsHandler.Login(credentialsAux);
 
                     this.Hide();
-                    MenuWindow newWindow = new MenuWindow(userContext, credentialsHandler);
+                    MenuWindow newWindow = new MenuWindow(context, userContext, credentialsHandler);
                     newWindow.Show();
                 }
             }

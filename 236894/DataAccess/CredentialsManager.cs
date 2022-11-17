@@ -46,7 +46,7 @@ namespace DataAccess
         {
             User newUser = user.DeepClone();
             newUser.Password = Hash(user.Password);
-            userContext.addUser(newUser);
+            userContext.AddUser(newUser);
         }
 
         private string Hash(string password, int iterations = 1000)
