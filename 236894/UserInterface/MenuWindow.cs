@@ -120,6 +120,7 @@ namespace UserInterface
                 listView1.Items.Add(item);
                 textMovieName.Clear();
                 textMovieGenre.Clear();
+                textMovieOtherGenre.Clear();
                 textMovieDesc.Clear();
                 textBoxURL.Clear();
                 checkBoxExplicit.Checked = false;
