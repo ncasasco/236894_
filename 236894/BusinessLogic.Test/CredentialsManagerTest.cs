@@ -47,6 +47,7 @@ namespace BusinessLogic.Test
         public void LoginTest()
         {
             var credentialsManager = new CredentialsManager(userContext);
+            credentialsManager.Register(admin);
             Credentials credentials = new Credentials()
             {
                 Mail = admin.Mail,
@@ -102,6 +103,7 @@ namespace BusinessLogic.Test
         public void RegisterNewUserTest()
         {
             var credentialsManager = new CredentialsManager(userContext);
+            credentialsManager.Register(admin);
             Credentials credentials = new Credentials()
             {
                 Mail = admin.Mail,
