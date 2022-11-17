@@ -16,49 +16,47 @@ namespace DataAccess
         {
             this.dataContext = dataContext;
         }
-        public int Count { get => this.dataContext.Movies.Count(); }
+        public int Count { get => this.dataContext.Genres.Count(); }
 
-        public void Add(Genre genre)
+        public void AddGenre(Genre genre)
         {
             if (genre is null)
                 throw new BusinessLogicException(nameof(genre));
             if (Exists(genre.GenreName))
                 throw new BusinessLogicException("Genre already exsists");
-
-            Genres.Add(genre);
+            this.dataContext.Genres.Add(genre);
+            this.dataContext.SaveChanges();
         }
 
         public bool Exists(string genrename)
         {
-            return Genres.Any(genre => genre.GenreName == genrename);
+            return this.dataContext.Genres.Any(genre => genre.GenreName == genrename);
         }
 
         public Genre Get(string genrename)
         {
             if (!Exists(genrename))
                 throw new BusinessLogicException("Genre does not exist");
-            return Genres.First(genre => genre.GenreName == genrename);
+            return this.dataContext.Genres.First(genre => genre.GenreName == genrename);
         }
 
         public void Update(Genre genre)
         {
             Remove(genre.GenreName);
-            Add(genre);
+            this.dataContext.Genres.Add(genre);
+            this.dataContext.SaveChanges();
         }
 
         public void Remove(string genrename)
         {
-            Genres = Genres.Where(genre => genre.GenreName != genrename).ToList();
+            var toRemove = this.dataContext.Genres.First(genre => genre.GenreName != genrename);
+            this.dataContext.Genres.Remove(toRemove);
+            this.dataContext.SaveChanges();
         }
 
-        public IList<Genre> GetAll()
+        public List<Genre> getGenreList()
         {
-            return new List<Genre>(Genres);
-        }
-
-        public void Clear()
-        {
-            Genres.Clear();
+            return this.dataContext.Genres.ToList();
         }
     }
 }

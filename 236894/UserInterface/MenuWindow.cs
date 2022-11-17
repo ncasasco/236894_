@@ -30,7 +30,7 @@ namespace UserInterface
             context = newContext;
             userContext = newUserContext;
             credentials = newCredentials;
-            genreContext = new GenreContext();
+            genreContext = new GenreContext(context);
             movieContext = new MovieContext(context);
             if (credentials.UserLogged.IsAdmin)
             {
@@ -72,7 +72,7 @@ namespace UserInterface
             {
                 genre.GenreName = textGenreName.Text;
                 genre.Description = textGenreDesc.Text;
-                genreContext.Add(genre);
+                genreContext.AddGenre(genre);
                 ListViewItem item = new ListViewItem(textGenreName.Text);
                 item.SubItems.Add(textGenreDesc.Text);
                 listView2.Items.Add(item);
