@@ -1,6 +1,7 @@
 ﻿using System;
 using DataAccess;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
 
 namespace BusinessLogic.Test
 {
@@ -17,19 +18,22 @@ namespace BusinessLogic.Test
         [TestInitialize]
         public void Setup()
         {
+            context = new Context();
             userContext = new UserContext(context);
             admin = new User()
             {
-                Mail = "adminnnnn",
+                Mail = "adminnnnnn",
                 Username = "Johnnnnnnn",
                 Password = "somepassword",
             };
             simpleUser = new User()
             {
-                Mail = "userrrrr",
+                Mail = "userrrrrrr",
                 Username = "Ryannnnnnn",
                 Password = "anotherpassword",
             };
+            userContext.addUser(admin);
+            userContext.addUser(simpleUser);
         }
 
         [TestMethod]
@@ -47,7 +51,8 @@ namespace BusinessLogic.Test
             {
                 Mail = admin.Mail,
                 Username = admin.Username,
-                Password = admin.Password
+                Password = admin.Password,
+                isAdmin = admin.IsAdmin
             };
 
             credentialsManager.Login(credentials);
@@ -147,6 +152,16 @@ namespace BusinessLogic.Test
         {
             var credentialsManager = new CredentialsManager(userContext);
             credentialsManager.Register(simpleUser);
+        }
+
+        [TestCleanup]
+        public void CleanUp()
+        {
+            foreach (var user in this.context.Users.ToList())
+            {
+                this.context.Users.Remove(user);
+            }
+            this.context.SaveChanges();
         }
 
     }

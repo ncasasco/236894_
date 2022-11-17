@@ -25,8 +25,10 @@ namespace DataAccess
 
         public void Login(Credentials userCredentials)
         {
-            if (!userContext.Exists(userCredentials.Mail) && !userContext.Exists(userCredentials.Username))
+            if (!userContext.Exists(userCredentials.Username))
+            {
                 throw new BusinessLogicException("Invalid username or password");
+            }
 
             User storedUser = userContext.Get(userCredentials.Username);
             IsLogged = storedUser.Password == Hash(userCredentials.Password);

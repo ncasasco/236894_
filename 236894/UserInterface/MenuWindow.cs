@@ -35,6 +35,7 @@ namespace UserInterface
                 btnMovies.Show();
                 btnGenres.Show();
             }
+            //foreach ()
         }
         private void button1_Click_3(object sender, EventArgs e)
         {

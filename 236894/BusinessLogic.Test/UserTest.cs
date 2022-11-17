@@ -106,8 +106,6 @@ namespace BusinessLogic.Test
             Assert.AreEqual(John, johnDoeUser.Username);
         }
 
-
-
         [TestMethod]
         public void PasswordNotNullTest()
         {

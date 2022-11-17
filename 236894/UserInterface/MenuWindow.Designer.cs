@@ -34,6 +34,8 @@ namespace UserInterface
             this.btnMovies = new System.Windows.Forms.Button();
             this.bnSalir = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.textMovieGenre = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.checkBoxSponsor = new System.Windows.Forms.CheckBox();
             this.checkBoxExplicit = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -62,8 +64,8 @@ namespace UserInterface
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textMovieGenre = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -119,6 +121,8 @@ namespace UserInterface
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.textMovieGenre);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.checkBoxSponsor);
@@ -141,10 +145,29 @@ namespace UserInterface
             this.panel2.Size = new System.Drawing.Size(500, 450);
             this.panel2.TabIndex = 4;
             // 
+            // textMovieGenre
+            // 
+            this.textMovieGenre.Location = new System.Drawing.Point(97, 266);
+            this.textMovieGenre.Name = "textMovieGenre";
+            this.textMovieGenre.Size = new System.Drawing.Size(168, 22);
+            this.textMovieGenre.TabIndex = 33;
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold);
+            this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button2.Location = new System.Drawing.Point(286, 230);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(204, 53);
+            this.button2.TabIndex = 32;
+            this.button2.Text = "Delete Movie";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
             // checkBoxSponsor
             // 
             this.checkBoxSponsor.AutoSize = true;
-            this.checkBoxSponsor.Location = new System.Drawing.Point(107, 386);
+            this.checkBoxSponsor.Location = new System.Drawing.Point(107, 413);
             this.checkBoxSponsor.Name = "checkBoxSponsor";
             this.checkBoxSponsor.Size = new System.Drawing.Size(98, 21);
             this.checkBoxSponsor.TabIndex = 31;
@@ -154,7 +177,7 @@ namespace UserInterface
             // checkBoxExplicit
             // 
             this.checkBoxExplicit.AutoSize = true;
-            this.checkBoxExplicit.Location = new System.Drawing.Point(107, 358);
+            this.checkBoxExplicit.Location = new System.Drawing.Point(107, 385);
             this.checkBoxExplicit.Name = "checkBoxExplicit";
             this.checkBoxExplicit.Size = new System.Drawing.Size(98, 21);
             this.checkBoxExplicit.TabIndex = 30;
@@ -165,7 +188,7 @@ namespace UserInterface
             // 
             this.label10.AutoSize = true;
             this.label10.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label10.Location = new System.Drawing.Point(12, 387);
+            this.label10.Location = new System.Drawing.Point(12, 414);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(77, 17);
             this.label10.TabIndex = 29;
@@ -176,7 +199,7 @@ namespace UserInterface
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label9.Location = new System.Drawing.Point(12, 361);
+            this.label9.Location = new System.Drawing.Point(12, 388);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(51, 17);
             this.label9.TabIndex = 28;
@@ -186,7 +209,7 @@ namespace UserInterface
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label8.Location = new System.Drawing.Point(15, 273);
+            this.label8.Location = new System.Drawing.Point(12, 271);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(48, 17);
             this.label8.TabIndex = 27;
@@ -194,7 +217,7 @@ namespace UserInterface
             // 
             // textMovieDesc
             // 
-            this.textMovieDesc.Location = new System.Drawing.Point(97, 330);
+            this.textMovieDesc.Location = new System.Drawing.Point(97, 357);
             this.textMovieDesc.Name = "textMovieDesc";
             this.textMovieDesc.Size = new System.Drawing.Size(168, 22);
             this.textMovieDesc.TabIndex = 24;
@@ -203,7 +226,7 @@ namespace UserInterface
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label6.Location = new System.Drawing.Point(16, 333);
+            this.label6.Location = new System.Drawing.Point(16, 360);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(79, 17);
             this.label6.TabIndex = 25;
@@ -211,7 +234,7 @@ namespace UserInterface
             // 
             // btnPoster
             // 
-            this.btnPoster.Location = new System.Drawing.Point(97, 295);
+            this.btnPoster.Location = new System.Drawing.Point(97, 322);
             this.btnPoster.Margin = new System.Windows.Forms.Padding(4);
             this.btnPoster.Name = "btnPoster";
             this.btnPoster.Size = new System.Drawing.Size(95, 28);
@@ -224,7 +247,7 @@ namespace UserInterface
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label7.Location = new System.Drawing.Point(12, 300);
+            this.label7.Location = new System.Drawing.Point(12, 327);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(49, 17);
@@ -240,7 +263,7 @@ namespace UserInterface
             // 
             // textBoxURL
             // 
-            this.textBoxURL.Location = new System.Drawing.Point(199, 297);
+            this.textBoxURL.Location = new System.Drawing.Point(199, 324);
             this.textBoxURL.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxURL.Name = "textBoxURL";
             this.textBoxURL.Size = new System.Drawing.Size(168, 22);
@@ -250,7 +273,7 @@ namespace UserInterface
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label5.Location = new System.Drawing.Point(15, 241);
+            this.label5.Location = new System.Drawing.Point(12, 241);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(45, 17);
             this.label5.TabIndex = 23;
@@ -401,24 +424,22 @@ namespace UserInterface
             this.openFileDialog2.FileName = "fotoPoster";
             this.openFileDialog2.Filter = "Archivos de imagen |*.jpg;*.jpeg;*.png";
             // 
-            // button2
+            // textBox1
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold);
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button2.Location = new System.Drawing.Point(286, 230);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(204, 53);
-            this.button2.TabIndex = 32;
-            this.button2.Text = "Delete Movie";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.textBox1.Location = new System.Drawing.Point(97, 295);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(168, 22);
+            this.textBox1.TabIndex = 35;
             // 
-            // textMovieGenre
+            // label11
             // 
-            this.textMovieGenre.Location = new System.Drawing.Point(97, 266);
-            this.textMovieGenre.Name = "textMovieGenre";
-            this.textMovieGenre.Size = new System.Drawing.Size(168, 22);
-            this.textMovieGenre.TabIndex = 33;
+            this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label11.Location = new System.Drawing.Point(12, 300);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(76, 17);
+            this.label11.TabIndex = 34;
+            this.label11.Text = "2nd Genre";
             // 
             // MenuWindow
             // 
@@ -479,5 +500,7 @@ namespace UserInterface
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textMovieGenre;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label11;
     }
 }
